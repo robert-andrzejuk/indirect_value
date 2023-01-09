@@ -27,14 +27,14 @@ propagate from the owning classes to the indirect_value type.
 
 using `indirect_value` a composite class can be written as:
 
-~~~ {.cpp}
+```cpp
 #include "indirect_value.h"
 
 class Composite {
   indirect_value<A> a_;
   indirect_value<B> b_;
 };
-~~~
+```
 
 When `A` and `B` can be incomplete types. 
 
@@ -44,7 +44,7 @@ derived-type objects then prefer (`polymorphic_value`)[https://github.com/jbcoe/
 
 `indirect_value` propagates `const` unlike `std::unique_ptr` so may be better choice for member data of a composite class.
 
-```
+```cpp
 #include <iostream>
 #include <utility>
 
@@ -90,7 +90,7 @@ int main(int argc, const char** argv) {
 
 Using `indirect_value` a pimpl class can be written as:
 
-~~~ {.cpp}
+```cpp
 // header.h
 #include <indirect_value.h>
 
@@ -106,9 +106,9 @@ public:
 private:
     isocpp_p1950::indirect_value<class pimpl> pimpl_;
 };
-~~~
+```
 
-~~~ {.cpp}
+```cpp
 // source.cc
 class pimpl {
     // Internal implementation details for the Pimpl
@@ -121,7 +121,7 @@ interface_type::interface_type(const interface_type& rhs) = default;
 interface_type& interface_type::operator=(interface_type&& rhs) noexcept = default;
 interface_type& interface_type::operator=(const interface_type& rhs) = default;
 interface_type::~interface_type() = default;
-~~~
+```
 
 # ISO Standardisation
 [`indirect_value` has been proposed for standardisation for C++23 in P1950R1](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2020/p1950r1.html)
@@ -166,6 +166,7 @@ The script will by default build the project via Visual Studio on Windows. On Li
 ## Building Manually Via CMake
 
 It is possible to build the project manually via CMake for a finer grained level of control regarding underlying build systems and compilers. This can be achieved as follows:
+  
 ```bash
 cd <project root>
 mkdir build
@@ -207,3 +208,4 @@ Polymorphic Value is now available on the Conan Center Index: https://conan.io/c
 
 ```bash
 indirect_value/0.0.1
+```
